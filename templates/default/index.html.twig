@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block header %}
+    {{ parent() }} <!-- permet l'affichage du contenu html présent dans le dossier parent templates/base.html.twig -->
+    <header>
+        HEADER index <!-- prend le dessus sur le contenu html présent dans le fichier parent templates/base.html.twig -->
+    </header>
+{% endblock %}
+
+{% block body %}
+
+    <h1>{{ author.fullname }}</h1>
+
+    <h2>Liste des livres :</h2>
+
+    <ul>
+        {% for book in author.books %}
+            <li><a href="{{ path('book_show', {'slug': book.slug}) }}">
+                    {{ book.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
